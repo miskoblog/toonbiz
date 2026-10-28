@@ -1,0 +1,193 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="robots" content="noindex, nofollow" />
+  <title>ToonBiz — The business side of RocketToons</title>
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Cdefs%3E%3ClinearGradient id='g' x1='4' y1='2' x2='28' y2='30' gradientUnits='userSpaceOnUse'%3E%3Cstop offset='0' stop-color='%234636E3'/%3E%3Cstop offset='1' stop-color='%237C3AED'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='32' height='32' rx='8' fill='url(%23g)'/%3E%3Ccircle cx='16' cy='16' r='8' fill='none' stroke='%23FAF9F6' stroke-width='2.6'/%3E%3Cpath d='M14 12.5v7l6-3.5z' fill='%23FAF9F6'/%3E%3C/svg%3E" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div class="gate" id="gate">
+    <form class="gate-card" id="gateForm">
+      <span class="gate-mark" aria-hidden="true">
+        <svg width="30" height="30" viewBox="0 0 32 32">
+          <defs><linearGradient id="ToonBizGateMark" x1="4" y1="2" x2="28" y2="30" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#4636E3" /><stop offset="1" stop-color="#7C3AED" /></linearGradient></defs>
+          <rect width="32" height="32" rx="8" fill="url(#ToonBizGateMark)" />
+          <circle cx="16" cy="16" r="8" fill="none" stroke="#FAF9F6" stroke-width="2.6" />
+          <path d="M14 12.5v7l6-3.5z" fill="#FAF9F6" />
+        </svg>
+      </span>
+      <h1>ToonBiz</h1>
+      <p>Enter the access password to open this bonus.</p>
+      <input type="password" id="gatePassword" placeholder="Password" autocomplete="off" autofocus />
+      <button type="submit" class="primary-btn">Unlock</button>
+      <p class="gate-error" id="gateError">That password isn't right — try again.</p>
+    </form>
+  </div>
+  <script>
+    if (localStorage.getItem("toonbiz_access") === "granted") {
+      document.getElementById("gate").classList.add("is-unlocked");
+    }
+    var storedTheme = localStorage.getItem("toonbiz_theme");
+    if (storedTheme === "dark" || storedTheme === "light") {
+      document.documentElement.setAttribute("data-theme", storedTheme);
+    }
+  </script>
+
+  <header class="topbar">
+    <div class="brand">
+      <span class="brand-mark" aria-hidden="true">
+        <svg width="26" height="26" viewBox="0 0 32 32">
+          <defs><linearGradient id="ToonBizMark" x1="4" y1="2" x2="28" y2="30" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#4636E3" /><stop offset="1" stop-color="#7C3AED" /></linearGradient></defs>
+          <rect width="32" height="32" rx="8" fill="url(#ToonBizMark)" />
+          <circle cx="16" cy="16" r="8" fill="none" stroke="#FAF9F6" stroke-width="2.6" />
+          <path d="M14 12.5v7l6-3.5z" fill="#FAF9F6" />
+        </svg>
+      </span>
+      <div class="brand-text">
+        <span class="brand-name">ToonBiz</span>
+        <span class="brand-tag">The business side of RocketToons</span>
+      </div>
+    </div>
+    <a class="powered-by" href="https://misanmorrison.com/" target="_blank" rel="noopener">
+      <span>Powered by</span>
+      <strong>Misan Morrison</strong>
+    </a>
+    <nav class="tabs" role="tablist" aria-label="ToonBiz sections">
+      <button class="tab-btn is-active" data-tab="guide" role="tab" aria-selected="true">How to Use</button>
+      <button class="tab-btn" data-tab="credit" role="tab" aria-selected="false">Credit Counter</button>
+      <button class="tab-btn" data-tab="quote" role="tab" aria-selected="false">Quote Desk</button>
+      <button class="tab-btn" data-tab="runway" role="tab" aria-selected="false">Channel Runway</button>
+    </nav>
+    <button class="theme-toggle" id="themeToggle" type="button" aria-label="Switch between light and dark theme" title="Switch theme">
+      <svg id="themeIconSun" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="4" /><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4" /></svg>
+      <svg id="themeIconMoon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21.0 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z" /></svg>
+    </button>
+  </header>
+
+  <main class="app">
+    <section class="panel is-active" id="panel-guide">
+      <div class="panel-head">
+        <h1>How to Use ToonBiz</h1>
+        <p>ToonBiz is the business side of your RocketToons AI toons: what an episode costs, what to charge for it, and whether a channel is paying off. Everything runs in your browser. Start with <strong>Credit Counter</strong> if you are about to render, <strong>Quote Desk</strong> if you want to sell toons to clients, or <strong>Channel Runway</strong> if you are building your own channel. Each tab stands on its own with sensible defaults.</p>
+      </div>
+      <div class="guide">
+
+        <div class="guide-section">
+          <h2><span class="guide-number">0</span> Before you start</h2>
+          <p>Every tool works the same way: change the inputs on the left and the result updates on the right. Nothing is sent anywhere.</p>
+          <ol>
+            <li>Press <span class="ui-ref">Save</span> on any tool to keep that run in the <em>Saved</em> list under it. Press <span class="ui-ref">Open</span> on a saved row to put the inputs <em>and</em> the result back exactly as they were, or <span class="ui-ref">Delete</span> to remove it.</li>
+            <li>Press <span class="ui-ref">Copy</span> to copy the result as plain text.</li>
+            <li>Where a tool can reuse a number from another tool, it has an optional <span class="ui-ref">Pull</span> button. You never have to use one.</li>
+            <li>Your last inputs on every tool are remembered automatically when you close the tab.</li>
+          </ol>
+        </div>
+
+        <div class="guide-section">
+          <h2><span class="guide-number">1</span> Credit Counter</h2>
+          <p>Know exactly what an episode costs before you press render. The rate card used everywhere: video 4 credits per second, still image 1 credit, AI-composed score 10 credits. Story, voices, captions and exports are free.</p>
+          <h3>Episode Credit Calculator</h3>
+          <ol>
+            <li>Choose your <span class="ui-ref">Plan</span>. Leave <span class="ui-ref">Credits left (blank = full plan)</span> empty to count from the full plan, or type what your account shows now.</li>
+            <li>Fill <span class="ui-ref">Scenes</span>, <span class="ui-ref">Seconds per scene</span>, <span class="ui-ref">Stills per scene</span>, <span class="ui-ref">Clips to re-render</span> and set <span class="ui-ref">AI-composed score</span>.</li>
+            <li>Read credits per episode, the breakdown, the percent of your balance, episodes left and the seconds of video your balance buys. Then <span class="ui-ref">Save</span> or <span class="ui-ref">Copy</span>.</li>
+          </ol>
+          <h3>Plan &amp; Runway Comparator</h3>
+          <ol>
+            <li>Enter <span class="ui-ref">Episodes per month</span>, <span class="ui-ref">Seconds per episode</span>, <span class="ui-ref">Credits per episode</span> (or press <span class="ui-ref">Pull credits per episode</span>) and <span class="ui-ref">Months credits should last</span>.</li>
+            <li>Compare Commercial, Commercial + Elite and Bundle side by side. It is a comparison only and never pushes an upgrade. Credits are one-time with no monthly top-up. <span class="ui-ref">Save</span> or <span class="ui-ref">Copy</span> the comparison.</li>
+          </ol>
+          <h3>Credit Ledger</h3>
+          <ol>
+            <li>Set <span class="ui-ref">Starting balance</span> (blank uses the calculator balance, or press <span class="ui-ref">Pull balance from calculator</span>).</li>
+            <li>For each finished episode fill <span class="ui-ref">Episode name</span>, <span class="ui-ref">Estimated credits</span>, <span class="ui-ref">Actual credits</span> and press <span class="ui-ref">Add Entry</span>. Use <span class="ui-ref">Remove</span> on a row to take it out.</li>
+            <li>Read balance, estimate variance, average actual and episodes left at your real spend. <span class="ui-ref">Save</span> stores a ledger snapshot.</li>
+          </ol>
+        </div>
+
+        <div class="guide-section">
+          <h2><span class="guide-number">2</span> Quote Desk</h2>
+          <p>Turn "sell every toon you make" into a number, a package and a first message.</p>
+          <h3>Client Price Calculator</h3>
+          <ol>
+            <li>Pick <span class="ui-ref">Client type</span> and <span class="ui-ref">Deliverable</span>, then set <span class="ui-ref">Revision rounds</span> (+10% per round beyond 1), <span class="ui-ref">Rush delivery (+25%)</span> and <span class="ui-ref">Paid ads usage (+35%)</span>.</li>
+            <li>Enter <span class="ui-ref">Credits per video</span>, <span class="ui-ref">Cost per credit ($)</span> and <span class="ui-ref">Hours you'll spend</span> to see your cost, margin and hourly rate. The base prices are editable assumptions anchored near the vendor's sample payments, not benchmarks.</li>
+            <li>You get a target price plus a low and a premium option. <span class="ui-ref">Save</span> or <span class="ui-ref">Copy</span> it.</li>
+          </ol>
+          <h3>Package &amp; One-Page Proposal Builder</h3>
+          <ol>
+            <li>Fill <span class="ui-ref">Your name / studio</span>, <span class="ui-ref">Client contact</span>, <span class="ui-ref">Client business</span>, <span class="ui-ref">What the videos are for</span>, <span class="ui-ref">Video type</span> and <span class="ui-ref">Payment terms</span>.</li>
+            <li>Type the <span class="ui-ref">Single-video price ($)</span> or press <span class="ui-ref">Pull price from Client Price Calculator</span>.</li>
+            <li>Check the Good, Better (recommended) and Best packages, then <span class="ui-ref">Print</span>, <span class="ui-ref">Save</span> or <span class="ui-ref">Copy</span>. It is a scope-and-price sheet, not a contract and not legal advice.</li>
+          </ol>
+          <h3>Pitch &amp; Objection Writer</h3>
+          <ol>
+            <li>Fill <span class="ui-ref">Your name</span>, <span class="ui-ref">Client first name</span>, <span class="ui-ref">Business name</span>, <span class="ui-ref">Client type</span>, <span class="ui-ref">What you're offering</span>, <span class="ui-ref">Price ($)</span> and choose <span class="ui-ref">Message type</span> (Email or DM). Add <span class="ui-ref">Something you noticed (optional)</span> to make it personal.</li>
+            <li>Copy the first message, the day-3 follow-up, the day-7 nudge and the four objection replies. <span class="ui-ref">Save</span> keeps the set.</li>
+          </ol>
+        </div>
+
+        <div class="guide-section">
+          <h2><span class="guide-number">3</span> Channel Runway</h2>
+          <p>From "grab 0.001% of 66.5B views" to a plan you can run on the credits you have.</p>
+          <h3>Slice-to-Income Reality Check</h3>
+          <ol>
+            <li>Choose your <span class="ui-ref">Niche</span>, set <span class="ui-ref">Episodes per week</span> and <span class="ui-ref">Monthly income goal ($)</span>.</li>
+            <li>Adjust the view mix percentages and the RPM per 1,000 views for each platform. Replace the RPMs with your own analytics as soon as you have them.</li>
+            <li>See revenue for 0.001%, 0.01% and 0.1% slices of 66.5B views, the yearly views your goal needs and the views per episode that implies. This is illustrative, not a promise.</li>
+          </ol>
+          <h3>Series Cadence Planner</h3>
+          <ol>
+            <li>Set <span class="ui-ref">First publish date</span>, <span class="ui-ref">Episodes per week</span>, <span class="ui-ref">Credits per episode</span> and <span class="ui-ref">Credits you have now</span> (or use <span class="ui-ref">Pull credits per episode</span> and <span class="ui-ref">Pull credits left</span>).</li>
+            <li>Tick the formats and platforms you will use. You get a 12-week grid, posts per episode and the date of the first episode you cannot afford. It plans only; it does not post or schedule. <span class="ui-ref">Print</span> it if you like.</li>
+          </ol>
+          <h3>Channel Scoreboard</h3>
+          <ol>
+            <li>Set <span class="ui-ref">Required views per episode</span> (or <span class="ui-ref">Pull required views per episode</span>) and <span class="ui-ref">Cost per credit ($)</span>.</li>
+            <li>Log each episode with <span class="ui-ref">Series</span>, <span class="ui-ref">Platform</span>, <span class="ui-ref">Date</span>, <span class="ui-ref">Views</span>, <span class="ui-ref">Credits used</span> and press <span class="ui-ref">Add Entry</span>.</li>
+            <li>Each series gets average views, average credits, cost per 1,000 views and a verdict: Too early (fewer than 3 episodes), Keep, Change or Stop.</li>
+          </ol>
+        </div>
+
+        <div class="guide-section guide-note">
+          <h2>One thing to know</h2>
+          <p>Everything you save lives in this browser only (no account, no sync), so it will not appear on another device or after clearing site data. A note on credits: the vendor's pages are inconsistent about what 1,000 credits buys (5, 10 or 15 second clips). Only 5 seconds matches the 4 credits per second rate card, so ToonBiz uses the rate card. The revenue and pricing tools are planning aids with editable assumptions, not guarantees.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="panel" id="panel-credit">
+      <div class="panel-head">
+        <h1>Credit Counter</h1>
+        <p>Know exactly what an episode costs before you press render.</p>
+      </div>
+      <div class="subtabs" role="tablist" aria-label="Credit Counter tools"></div>
+      <div class="subpanels"></div>
+    </section>
+
+    <section class="panel" id="panel-quote">
+      <div class="panel-head">
+        <h1>Quote Desk</h1>
+        <p>Turn "sell every toon you make" into a number, a package and a first message.</p>
+      </div>
+      <div class="subtabs" role="tablist" aria-label="Quote Desk tools"></div>
+      <div class="subpanels"></div>
+    </section>
+
+    <section class="panel" id="panel-runway">
+      <div class="panel-head">
+        <h1>Channel Runway</h1>
+        <p>From "grab 0.001% of 66.5B views" to a plan you can run on the credits you have.</p>
+      </div>
+      <div class="subtabs" role="tablist" aria-label="Channel Runway tools"></div>
+      <div class="subpanels"></div>
+    </section>
+  </main>
+
+  <div class="toast" id="toast"></div>
+  <script src="app.js"></script>
+</body>
+</html>
